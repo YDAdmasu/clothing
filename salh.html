@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Responsive Navigation Bar</title>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-color: transparent;
+            --text-color: #000;
+            --menu-bg: #fff;
+        }
+        [data-theme="dark"] {
+            --bg-color: transparent;
+            --text-color: #fff;
+            --menu-bg: #1f2937;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+        [data-theme="dark"] body {
+            background: #1f2937;
+        }
+        .mobile-menu {
+            background: var(--menu-bg);
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="bg-[var(--bg-color)] shadow-sm fixed w-full top-0 z-10 backdrop-blur-sm">
+        
+        <div class="border-b border-gray-200">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+             
+                <div class="text-[var(--text-color)] text-sm">
+                    <i class="fa-solid fa-phone mr-2"></i><span data-key="phone">+251910864124</span>
+                </div>
+               
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-[var(--text-color)] hover:text-blue-500"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="text-[var(--text-color)] hover:text-blue-500"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="text-[var(--text-color)] hover:text-blue-500"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="text-[var(--text-color)] hover:text-blue-500"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-[var(--text-color)] hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+                  
+                    <select id="langSelect" class="bg-transparent text-[var(--text-color)] border border-gray-300 rounded px-2 py-1 text-sm">
+                        <option value="en">EN</option>
+                        <option value="am">አማ</option>
+                    </select>
+                    
+                    <button id="darkToggle" class="text-[var(--text-color)] hover:text-blue-500"><i class="fas fa-moon"></i></button>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            
+            <div class="text-xl md:text-2xl font-bold text-[var(--text-color)]">
+                <img src="image/ecco.png" alt="Logo" class="h-8 md:h-10 lg:h-12 xl:h-16">
+               
+            </div>
+
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#" data-key="men" class="text-[var(--text-color)] hover:text-blue-500 font-medium">MEN</a>
+                <a href="#" data-key="women" class="text-[var(--text-color)] hover:text-blue-500 font-medium">WOMEN</a>
+                <a href="#" data-key="kids" class="text-[var(--text-color)] hover:text-blue-500 font-medium">KIDS</a>
+                <a href="#" data-key="family" class="text-[var(--text-color)] hover:text-blue-500 font-medium">FAMILY</a>
+            </div>
+
+<div class="flex items-center space-x-4">
+                <a href="#" class="text-[var(--text-color)] hover:text-blue-500"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="#" class="text-[var(--text-color)] hover:text-blue-500"><i class="fa-solid fa-heart"></i></a>
+                <a href="#" class="text-[var(--text-color)] hover:text-blue-500"><i class="fa-solid fa-user"></i></a>
+                <a href="#" class="text-[var(--text-color)] hover:text-blue-500"><i class="fa-solid fa-cart-shopping"></i></a>
+                
+                <button class="md:hidden text-[var(--text-color)] hover:text-blue-500" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+       
+        <div id="mobile-menu" class="hidden md:hidden mobile-menu border-t border-gray-200">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#" data-key="men" class="text-[var(--text-color)] hover:text-blue-500 font-medium">MEN</a>
+                <a href="#" data-key="women" class="text-[var(--text-color)] hover:text-blue-500 font-medium">WOMEN</a>
+                <a href="#" data-key="kids" class="text-[var(--text-color)] hover:text-blue-500 font-medium">KIDS</a>
+                <a href="#" data-key="family" class="text-[var(--text-color)] hover:text-blue-500 font-medium">FAMILY</a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <div class="content mt-32 container mx-auto px-4">
+        <h1 data-key="welcome" class="text-3xl font-bold">Welcome</h1>
+        <p data-key="content" class="mt-4">This is your multi-language and theme-toggle example. Select Amharic or toggle dark mode to see the changes.</p>
+    </div>
+
+   
+    <script>
+        const translations = {
+            en: {
+                phone: "+251910864124",
+                logo: "Logo",
+                men: "MEN",
+                women: "WOMEN",
+                kids: "KIDS",
+                family: "FAMILY",
+                welcome: "Welcome",
+                content: "This is your multi-language and theme-toggle example. Select Amharic or toggle dark mode to see the changes."
+            },
+            am: {
+                phone: "+251910864124",
+                logo: "ሎጎ",
+                men: "ወንዶች",
+                women: "ሴቶች",
+                kids: "ልጆች",
+                family: "ቤተሰብ",
+                welcome: "እንኳን ደህና መጡ",
+                content: "ይህ ባለብዙ ቋንቋ እና ጨለማ ሁነታ መቀየሪያ ምሳሌ ነው። አማርኛን ይምረጡ ወይም ጨለማ ሁነታን ያብሩ።"
+            }
+        };
+
+        const langSelect = document.getElementById("langSelect");
+        const darkToggle = document.getElementById("darkToggle");
+
+        function updateLanguage(lang) {
+            localStorage.setItem("siteLang", lang);
+            document.querySelectorAll("[data-key]").forEach(el => {
+                const key = el.getAttribute("data-key");
+                if (key && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        function setInitialLanguage() {
+            const savedLang = localStorage.getItem("siteLang")  "en";
+            langSelect.value = savedLang;
+            updateLanguage(savedLang);
+        }
+
+        function toggleDarkMode() {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            darkToggle.innerHTML = newTheme === "dark" ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+
+        function setInitialTheme() {
+            const savedTheme = localStorage.getItem("theme")  "light";
+            document.documentElement.setAttribute("data-theme", savedTheme);
+            darkToggle.innerHTML = savedTheme === "dark" ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+
+
+function toggleMenu() {
+            const mobileMenu = document.getElementById("mobile-menu");
+            mobileMenu.classList.toggle("hidden");
+        }
+
+        
+        langSelect.addEventListener("change", () => updateLanguage(langSelect.value));
+        darkToggle.addEventListener("click", toggleDarkMode);
+
+        
+        setInitialLanguage();
+        setInitialTheme();
+    </script>
+</body>
+</html>

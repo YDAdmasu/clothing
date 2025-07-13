@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Navbar Refined</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Optional: Add smooth transition for any logo hover effects */
+    .navbar-logo {
+      transition: all 0.3s ease;
+    }
+    .navbar-logo:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-white/70 to-white min-h-screen">
+
+  <!-- Independent Logo (positioned absolutely) -->
+  <div class="fixed top-4 left-4 z-50"> <!-- Increased top/left spacing -->
+    <img src="image/ecco.png" alt="Logo" class="navbar-logo h-20 ml-2">
+ <!-- h-16 (64px) with negative margin -->
+  </div>
+
+  <!-- Navbar -->
+  <nav class="w-full fixed top-0 left-0 z-40 px-4 py-2 bg-transparent backdrop-blur-sm">
+    <div class="relative flex justify-between max-w-7xl mx-auto">
+
+      <!-- Empty div to balance layout (since logo is now independent) -->
+      <div class="w-20"></div> <!-- Matches logo width -->
+
+      <!-- Middle: Lowered Nav -->
+      <div class="absolute left-1/2 top-14 -translate-x-1/2 flex gap-10 text-xl font-semibold text-gray-900">
+        <a href="#" class="hover:text-black transition">MENS</a>
+        <a href="#" class="hover:text-black transition">WOMENS</a>
+        <a href="#" class="hover:text-black transition">KIDS</a>
+        <a href="#" class="hover:text-black transition">BABY</a>
+      </div>
+
+      <!-- Right: Location, Language with Globe, Hamburger -->
+      <div class="flex flex-col gap-1 text-sm items-end pt-1 z-10">
+        <div class="flex items-center gap-4 text-gray-700">
+          <!-- Location -->
+          <div class="flex items-center gap-1">
+            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zM12 11a2 2 0 110-4 2 2 0 010 4z"/>
+            </svg>
+            <span>See nearest shops</span>
+          </div>
+
+          <!-- Language -->
+          <div class="flex items-center gap-1 text-gray-800 font-medium">
+            <svg class="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12H22M2 12C2 17.5228 6.47715 22 12 22M2 12C2 6.47715 6.47715 2 12 2M22 12C22 17.5228 17.5228 22 12 22M22 12C22 6.47715 17.5228 2 12 2M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22M12 2C9.49872 4.73835 8.07725 8.29203 8 12C8.07725 15.708 9.49872 19.2616 12 22"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>EN</span>
+          </div>
+
+          <!-- Hamburger Menu -->
+          <div class="relative">
+            <button id="hamburgerToggle" class="focus:outline-none">
+              <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Menu" class="w-5 h-5">
+            </button>
+            <div id="hamburgerMenu" class="hidden absolute right-0 bg-white border shadow-md mt-1 rounded text-sm w-32 z-10">
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">About</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Contact Us</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Support</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- JS: Toggle Hamburger Dropdown -->
+  <script>
+    const hamburgerToggle = document.getElementById('hamburgerToggle');
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+
+    hamburgerToggle.addEventListener('click', () => {
+      hamburgerMenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!hamburgerToggle.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+        hamburgerMenu.classList.add('hidden');
+      }
+    });
+  </script>
+
+</body>
+</html>

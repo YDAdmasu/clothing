@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Navbar with Hamburger</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-white/70 to-white min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="w-full fixed top-0 left-0 z-50 px-4 py-2 bg-transparent backdrop-blur-sm">
+    <div class="relative flex items-start justify-between max-w-7xl mx-auto">
+
+      <!-- Left: Logo -->
+      <div class="flex items-center z-10">
+        <img src="https://via.placeholder.com/80x30?text=LOGO" alt="Logo" class="h-8">
+      </div>
+
+      <!-- Middle: Lowered Nav Links -->
+      <div class="absolute left-1/2 top-8 -translate-x-1/2 flex gap-10 text-xl font-semibold text-gray-900">
+        <a href="#" class="hover:text-black transition">Man</a>
+        <a href="#" class="hover:text-black transition">Woman</a>
+        <a href="#" class="hover:text-black transition">Kid</a>
+        <a href="#" class="hover:text-black transition">Baby</a>
+      </div>
+
+      <!-- Right: Location, Language, Hamburger -->
+      <div class="flex flex-col gap-1 text-sm items-end pt-1 z-10">
+        <div class="flex items-center gap-3 text-gray-700">
+          <!-- Location -->
+          <div class="flex items-center gap-1">
+            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="1.5"
+                 viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15 10l4.553-4.553a1.6 1.6 0 00-2.265-2.265L12.75 7.75m0 0L9.197 4.197a1.6 1.6 0 00-2.265 2.265L9.75 10m3 0V21"></path>
+            </svg>
+            <span>Add Location</span>
+          </div>
+
+          <!-- Language -->
+          <div class="relative">
+            <button id="langToggle" class="hover:text-black focus:outline-none">
+              EN / AM ▼
+            </button>
+            <div id="langMenu" class="hidden absolute right-0 bg-white border shadow-md mt-1 rounded text-sm w-20 z-10">
+              <a href="#" class="block px-3 py-1 hover:bg-gray-100">EN</a>
+              <a href="#" class="block px-3 py-1 hover:bg-gray-100">AM</a>
+            </div>
+          </div>
+
+          <!-- Hamburger Menu -->
+          <div class="relative">
+            <button id="hamburgerToggle" class="focus:outline-none">
+              <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Menu" class="w-5 h-5">
+            </button>
+            <div id="hamburgerMenu" class="hidden absolute right-0 bg-white border shadow-md mt-1 rounded text-sm w-32 z-10">
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">About</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Contact Us</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Support</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- JavaScript for Dropdown Toggles -->
+  <script>
+    const langToggle = document.getElementById('langToggle');
+    const langMenu = document.getElementById('langMenu');
+    const hamburgerToggle = document.getElementById('hamburgerToggle');
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+
+    langToggle.addEventListener('click', () => {
+      langMenu.classList.toggle('hidden');
+      hamburgerMenu.classList.add('hidden');
+    });
+
+    hamburgerToggle.addEventListener('click', () => {
+      hamburgerMenu.classList.toggle('hidden');
+      langMenu.classList.add('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langToggle.contains(e.target) && !langMenu.contains(e.target)) {
+        langMenu.classList.add('hidden');
+      }
+      if (!hamburgerToggle.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+        hamburgerMenu.classList.add('hidden');
+      }
+    });
+  </script>
+
+</body>
+</html>
